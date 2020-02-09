@@ -9,6 +9,7 @@
         <thead>
             <tr>
                 <td>Nome</td>
+                <td>Temperatura</td>
                 <td>Tasks</td>
                 <td></td>
             </tr>
@@ -17,6 +18,7 @@
             {% for arnia in object_list %}
             <tr>
                 <td><a href="{% url 'arnia_update' arnia.pk %}">{{ arnia.nome }}</a> </td>
+                <td>{{ arnia.get_temp }}°</td>
                 <td>{{ arnia.task.count }}</td>
                 <td><a href="{% url 'arnia_delete' arnia.pk %}" class="delete is-danger"></a></td>
             </tr>

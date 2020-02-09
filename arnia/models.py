@@ -12,4 +12,4 @@ class Arnia(models.Model):
 
     def get_temp(self):
         """La temperatura è acquisita da un sensore e viene letta da un API -> GetTemp(IdArnia)."""
-        pass
+        return 25
