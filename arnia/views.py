@@ -14,8 +14,8 @@ class ArniaList(LoginRequiredMixin, generic.ListView):
 class ArniaDetail(LoginRequiredMixin, generic.DetailView):
     model = Arnia
 
-    # def get_queryset(self):
-    #     return super().get_queryset().filter(apicoltore=self.kwargs['pk'])
+    def get_queryset(self):
+        return super().get_queryset().filter(apiari__apicoltori=self.request.user.apicoltore)
 
 
 class ArniaCreate(LoginRequiredMixin, generic.CreateView):

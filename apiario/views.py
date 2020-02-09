@@ -7,6 +7,10 @@ from apiario.models import Apiario
 class ApiarioList(LoginRequiredMixin, generic.ListView):
     model = Apiario
 
+    def get_queryset(self):
+        return super().get_queryset().filter(apicoltori=self.request.user.apicoltore)
+
+
 
 class ApiarioDetail(LoginRequiredMixin, generic.DetailView):
     model = Apiario

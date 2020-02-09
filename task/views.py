@@ -10,12 +10,15 @@ from task.models import Task
 class TaskList(LoginRequiredMixin, generic.ListView):
     model = Task
 
+    def get_queryset(self):
+        return super().get_queryset().filter(arnia__apiari__apicoltori=self.request.user.apicoltore)
+
 
 class TaskDetail(LoginRequiredMixin, generic.DetailView):
     model = Task
 
     def get_queryset(self):
-        return super().get_queryset().filter(apicoltore=self.kwargs['pk'])
+        return super().get_queryset().filter(arnia__apiari__apicoltori=self.request.user.apicoltore)
 
 
 class TaskCreate(LoginRequiredMixin, generic.CreateView):
