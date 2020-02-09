@@ -1,0 +1,29 @@
+{% extends "threebee/index.html" %}
+
+{% block content %}
+    <h2>Arnie</h2>
+    <a href="{% url 'arnia_create' %}" class="button is-info">Aggiugni</a>
+
+    <div class="table-container">
+      <table class="table">
+        <thead>
+            <tr>
+                <td>Nome</td>
+                <td>Tasks</td>
+                <td></td>
+            </tr>
+        </thead>
+          <tbody>
+            {% for arnia in object_list %}
+            <tr>
+                <td><a href="{% url 'arnia_update' arnia.pk %}">{{ arnia.nome }}</a> </td>
+                <td>{{ arnia.task.count }}</td>
+                <td><a href="{% url 'arnia_delete' arnia.pk %}" class="delete is-danger"></a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+
+      </table>
+    </div>
+
+{% endblock %}

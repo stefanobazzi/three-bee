@@ -1,0 +1,10 @@
+{% extends 'threebee/index.html' %}
+
+{% block content %}
+
+    <form method="post">{% csrf_token %}
+        <p>Vuoi davvero eliminare "{{ object }}"?</p>
+        <input type="submit" value="Conferma" />
+    </form>
+
+{% endblock %}

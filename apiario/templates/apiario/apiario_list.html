@@ -1,0 +1,29 @@
+{% extends "threebee/index.html" %}
+
+{% block content %}
+    <h2>Apiari</h2>
+    <a href="{% url 'apiari_create' %}" class="button is-info">Aggiugni</a>
+
+    <div class="table-container">
+      <table class="table">
+        <thead>
+            <tr>
+                <td>Apiario</td>
+                <td>Numero arnie</td>
+                <td></td>
+            </tr>
+        </thead>
+          <tbody>
+            {% for apiario in request.user.apicoltore.apiari.all %}
+            <tr>
+                <td><a href="{% url 'apiari_update' apiario.pk %}">{{ apiario.nome }}</a> </td>
+                <td>{{ apiario.arnie.count }}</td>
+                <td><a href="{% url 'apiari_delete' apiario.pk %}" class="delete is-danger"></a></td>
+            </tr>
+          {% endfor %}
+          </tbody>
+
+      </table>
+    </div>
+
+{% endblock %}

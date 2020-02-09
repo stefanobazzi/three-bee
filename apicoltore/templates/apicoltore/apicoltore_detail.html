@@ -1,0 +1,11 @@
+{% extends "threebee/index.html" %}
+
+{% block content %}
+    <h2>Apiari</h2>
+    {{request.user.apicoltore.apiari.all}}
+    <ul>
+        {% for apiario in request.user.apicoltore.apiari.all %}
+            <li>{{ apiario }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
